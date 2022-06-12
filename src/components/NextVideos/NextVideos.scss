@@ -1,0 +1,63 @@
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/colours" as *;
+@use "../../styles/partials/mixins" as *;
+
+.videos {
+  padding: 1rem;
+  list-style: none;
+
+  &__title {
+    padding-left: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid $divider-color;
+
+    @include desktop {
+      border-top: none;
+      padding-top: 2rem;
+    }
+  }
+  &-list {
+    &__container {
+      display: flex;
+      text-decoration: none;
+      color: $text-color;
+    }
+
+    &__container:not(:first-child) {
+      padding-top: 1rem;
+      overflow: hidden;
+    }
+    &__right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      padding: 0.25rem 0 0.25rem 1rem;
+      max-width: 8rem;
+      @include tablet {
+        max-width: unset;
+      }
+    }
+
+    &__img {
+      min-width: 7.5rem;
+      max-width: 7.5rem;
+      height: 4.375rem;
+      border-radius: 0.625rem;
+      object-fit: cover;
+    }
+    &__item {
+      font-weight: 700;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      @include tablet {
+        display: unset;
+        -webkit-box-orient: unset;
+        -webkit-line-clamp: unset;
+        overflow: unset;
+      }
+    }
+  }
+}

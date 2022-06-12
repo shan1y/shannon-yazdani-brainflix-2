@@ -1,0 +1,103 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/colours" as *;
+
+.video-info {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: left;
+  @include container-mobile;
+  &__title {
+    padding-bottom: 1rem;
+  }
+
+  &__title {
+    padding: 1rem;
+    @include container-mobile;
+  }
+
+  &__section {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__description {
+    padding: 1rem;
+  }
+}
+
+.vid-list {
+  display: flex;
+  list-style: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  border-bottom: 1px solid $divider-color;
+  border-top: 1px solid $divider-color;
+  color: $secondary-text-color;
+  padding: 1rem;
+  @include container-mobile;
+
+  li:first-child {
+    font-weight: 700;
+    color: $text-color;
+    margin-right: 3rem;
+    @include tablet {
+      max-width: 7.5rem;
+      margin-right: 0;
+
+      @include desktop {
+        max-width: 10rem;
+      }
+    }
+  }
+  li:nth-child(3) {
+    margin-right: 3rem;
+    @include tablet {
+      margin-left: 0.7rem;
+      margin-right: 20rem;
+
+      @include desktop {
+        margin-right: 12rem;
+      }
+    }
+  }
+
+  @include tablet {
+    flex-wrap: nowrap;
+    border-top: none;
+    padding: 0 1rem 0rem 1rem;
+
+    :nth-child(2) {
+      order: 3;
+      justify-content: flex-end;
+    }
+
+    :nth-child(4) {
+      order: 4;
+      justify-content: flex-end;
+    }
+  }
+
+  &__item {
+    flex: 40%;
+    padding: 0.5rem 0;
+    display: flex;
+
+    @include tablet {
+      max-width: 10rem;
+    }
+  }
+
+  &__container {
+    display: flex;
+    width: 1rem;
+    justify-content: center;
+  }
+
+  &__icon {
+    margin-right: 1.25rem;
+    height: 1rem;
+  }
+}

@@ -1,0 +1,153 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../assets/fonts/fonts" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/colours" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $fontStack;
+}
+
+.upload {
+  padding: 1rem;
+  border-top: 1px solid $divider-color;
+
+  @include desktop {
+    padding: 2rem 3rem 0rem 3em;
+  }
+
+  &__success-bar {
+    align-self: center;
+    text-align: center;
+    font-weight: 600;
+    background-color: rgb(154, 236, 154);
+    text-transform: uppercase;
+    color: rgb(51, 149, 95);
+    border-radius: 4px;
+  }
+
+  &-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__form-container {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 1rem;
+    @include tablet {
+      justify-content: left;
+    }
+
+    @include desktop {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  &__sub-title {
+    margin-bottom: 0.5rem;
+  }
+
+  &__img {
+    border-radius: 4px;
+    width: 100%;
+    object-fit: contain;
+    @include tablet {
+      max-width: 25rem;
+    }
+  }
+  &__label {
+    text-transform: uppercase;
+    display: inline-block;
+    margin-top: 1rem;
+
+    @include desktop {
+      margin-top: 0;
+      margin-bottom: 0.35rem;
+    }
+  }
+
+  &__label:nth-of-type(2) {
+    margin-top: 1rem;
+  }
+
+  &__inputs {
+    width: 100%;
+    @include desktop {
+      padding-left: 1rem;
+    }
+  }
+
+  &__user-title {
+    width: 100%;
+    padding-left: 0.5rem;
+    height: 2.5rem;
+    background-position: 3%;
+    text-indent: 0.5rem;
+    border-style: none;
+    border: 1px solid $divider-color;
+    border-radius: 0.25rem;
+    background-color: $form-field-color;
+    resize: none;
+    &::placeholder {
+      color: $text-color;
+    }
+  }
+
+  &__user-description {
+    @extend .upload__user-title;
+    height: 4.85rem;
+    padding-top: 0.5rem;
+  }
+}
+.buttons {
+  @include tablet {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  &__cancel {
+    background-color: transparent;
+    border: none;
+    color: $cta-color;
+    width: 100%;
+    text-transform: uppercase;
+    padding: 0.625rem;
+    @include tablet {
+      flex: 0.2;
+    }
+  }
+  &__publish {
+    width: 100%;
+    background-color: $cta-color;
+    border-style: none;
+    background-image: url("../../assets/Icons/publish.svg");
+    background-repeat: no-repeat;
+    background-position: 3%;
+    color: $white;
+    padding: 0.625rem;
+    text-transform: uppercase;
+    margin: 1rem 0;
+    border-radius: 4px;
+    @include tablet {
+      flex: 0.4;
+      padding-inline: 3rem;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.divider {
+  border-bottom: 1px solid $divider-color;
+  display: none;
+  @include tablet {
+    display: flex;
+    margin-top: 2rem;
+  }
+}

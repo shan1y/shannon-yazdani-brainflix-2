@@ -1,0 +1,29 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/colours" as *;
+
+.video {
+  margin: 0 auto;
+  background-color: $video-player-color;
+  display: flex;
+  justify-content: center;
+
+  @include tablet {
+  }
+
+  &__frame {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background-color: black;
+    max-width: 1280px;
+    object-fit: cover;
+
+    @include tablet {
+      background-color: $video-player-color;
+      width: 90%;
+
+      @include desktop {
+        width: 70%;
+      }
+    }
+  }
+}

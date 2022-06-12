@@ -1,0 +1,64 @@
+@use "../partials/colours" as *;
+@use "../partials/mixins" as *;
+h1 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+
+  @include tablet {
+    font-size: 33px;
+    line-height: 44px;
+    font-weight: 700;
+  }
+}
+
+h2 {
+  text-transform: uppercase;
+  color: $secondary-text-color;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 700;
+
+  @include tablet {
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 700;
+  }
+}
+
+h3 {
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 700;
+  @include tablet {
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 700;
+  }
+}
+
+p,
+li {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+
+  @include tablet {
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
+  }
+}
+
+button {
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 700;
+}
+
+label {
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 700;
+  color: $silver;
+}
