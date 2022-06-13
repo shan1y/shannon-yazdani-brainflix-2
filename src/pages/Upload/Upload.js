@@ -18,22 +18,26 @@ class Upload extends React.Component {
     initalPageDescription: null,
   };
 
+  //form validation function
   formValidation = (movieTitle, movieDescription) => {
     let isValid = true;
     const errors = {};
+    //always sets initiallPageTitle to false so that error messages are not shown unless if conditions below are valid.
     let initialPageTitle = false;
     let initialPageDescription = false;
+    //if nothing was entered in title input field
     if (movieTitle.trim().length <= 0) {
       isValid = false;
       errors.titleLength = "Please provide a video title";
       initialPageTitle = true;
     }
-
+    //if nothing was entered in description input field
     if (movieDescription.trim().length <= 0) {
       isValid = false;
       errors.descriptionLength = "Please provide a video description";
       initialPageDescription = true;
     }
+    //always reset the state. Errors keys may change depending on which fields were/were not filled in.
     this.setState({ errors, initialPageTitle, initialPageDescription });
     return isValid;
   };
@@ -44,6 +48,7 @@ class Upload extends React.Component {
     let movieDescription = event.target.description.value;
     const isValid = this.formValidation(movieTitle, movieDescription);
 
+    //If both title and description fields are filled out, execute following code:
     if (isValid) {
       let newMovieData = {
         title: movieTitle,
@@ -51,6 +56,7 @@ class Upload extends React.Component {
         description: movieDescription,
         timestamp: Date.now(),
       };
+      //construct body for post request
       await axios.post("http://localhost:8080/videos", newMovieData);
       this.setState({
         uploadState: true,
@@ -58,6 +64,7 @@ class Upload extends React.Component {
         padding: "1rem",
         initialPage: false,
       });
+      //animation for "upload success" banner
       setTimeout(() => {
         this.setState({ uploadState: true, opacity: 0, padding: "0rem" });
       }, 2000);
