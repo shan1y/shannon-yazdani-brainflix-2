@@ -6,6 +6,12 @@
   padding: 1rem;
   list-style: none;
 
+  &__section {
+    @include desktop {
+      width: 27.625rem;
+    }
+  }
+
   &__title {
     padding-left: 1rem;
     padding-top: 1rem;

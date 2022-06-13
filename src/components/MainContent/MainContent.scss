@@ -3,6 +3,10 @@
 @use "../../styles/partials/breakpoints" as *;
 
 .desktop {
+  width: 100%;
+  @include tablet {
+    width: 90%;
+  }
   @include desktop {
     display: flex;
     justify-content: center;
@@ -14,7 +18,7 @@
     max-width: 750px;
 
     @include desktop {
-      max-width: 1280px;
+      width: 1280px;
       border-right: 1px solid $divider-color;
     }
   }

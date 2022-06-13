@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function NextVideos({ videosList, selectChosenVideo }) {
   return (
-    <div>
+    <div className="videos__section">
       <h2 className="videos__title">Next Videos</h2>
       <ul className="videos">
         {videosList.map((video) => {
