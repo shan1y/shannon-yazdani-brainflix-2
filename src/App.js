@@ -1,5 +1,5 @@
 import "./App.scss";
-import Header from "./components/Header/Header";
+import HeaderComponent from "./components/HeaderComponent/HeaderComponent";
 import "../src/styles/partials/_global.scss";
 import React from "react";
 import MainContent from "./components/MainContent/MainContent";
@@ -14,7 +14,7 @@ class App extends React.Component {
     return (
       <>
         <BrowserRouter>
-          <Header />
+          <HeaderComponent />
           <Switch>
             <Route path="/" exact component={MainContent} />
             <Route path="/videos/:id" component={MainContent} />

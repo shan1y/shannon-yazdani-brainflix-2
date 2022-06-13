@@ -17,7 +17,6 @@ class MainContent extends React.Component {
 
   //Set state on initial render.
   componentDidMount() {
-    console.log("mounted");
     axios
       .get("http://localhost:8080/videos")
       .then((response) => {
@@ -37,9 +36,6 @@ class MainContent extends React.Component {
 
   //when route is changed
   componentDidUpdate(previousProps, currentProps) {
-    console.log("updated");
-    console.log("previous props", previousProps);
-    console.log("current props", currentProps);
     const previousId = previousProps.match.params.id;
     const currentId = this.props.match.params.id;
     //compare the previous Id with the new Id from route. If they're different, we make a API request to return the selectedvideo object, then set state with that info.

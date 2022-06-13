@@ -1,7 +1,7 @@
 import userIcon from "../../assets/Images/Mohan-muruge.jpg";
 import logo from "../../assets/Logo/BrainFlix-logo.svg";
 import { Link } from "react-router-dom";
-import "../../components/Header/Header.scss";
+import "./HeaderComponent.scss";
 
 function Header() {
   return (
