@@ -9,29 +9,67 @@ const styles = {
 };
 
 class Upload extends React.Component {
-  state = { uploadState: true, opacity: 0, padding: 0 };
+  state = {
+    uploadState: true,
+    opacity: 0,
+    padding: 0,
+    errors: { titleLength: 0, descriptionLength: 0 },
+    initialPageTitle: null,
+    initalPageDescription: null,
+  };
+
+  formValidation = (movieTitle, movieDescription) => {
+    let isValid = true;
+    const errors = {};
+    let initialPageTitle = false;
+    let initialPageDescription = false;
+    if (movieTitle.trim().length <= 0) {
+      isValid = false;
+      errors.titleLength = "Please provide a video title";
+      initialPageTitle = true;
+    }
+
+    if (movieDescription.trim().length <= 0) {
+      isValid = false;
+      errors.descriptionLength = "Please provide a video description";
+      initialPageDescription = true;
+    }
+    this.setState({ errors, initialPageTitle, initialPageDescription });
+    return isValid;
+  };
 
   handleSubmit = async (event) => {
     event.preventDefault();
     let movieTitle = event.target.title.value;
     let movieDescription = event.target.description.value;
-    let newMovieData = {
-      title: movieTitle,
-      channel: "Mohan Muruge",
-      description: movieDescription,
-      timestamp: Date.now(),
-    };
-    await axios.post("http://localhost:8080/videos", newMovieData);
-    this.setState({ uploadState: true, opacity: 1, padding: "1rem" });
-    setTimeout(() => {
-      this.setState({ uploadState: true, opacity: 0, padding: "0rem" });
-    }, 2000);
-    setTimeout(() => {
-      this.props.history.push("/");
-    }, 3000);
+    const isValid = this.formValidation(movieTitle, movieDescription);
+
+    if (isValid) {
+      let newMovieData = {
+        title: movieTitle,
+        channel: "Mohan Muruge",
+        description: movieDescription,
+        timestamp: Date.now(),
+      };
+      await axios.post("http://localhost:8080/videos", newMovieData);
+      this.setState({
+        uploadState: true,
+        opacity: 1,
+        padding: "1rem",
+        initialPage: false,
+      });
+      setTimeout(() => {
+        this.setState({ uploadState: true, opacity: 0, padding: "0rem" });
+      }, 2000);
+      setTimeout(() => {
+        this.props.history.push("/");
+      }, 3000);
+    }
   };
 
   render() {
+    const { errors, initialPageTitle, initialPageDescription } = this.state;
+
     return (
       <div>
         {this.state.uploadState && (
@@ -69,6 +107,9 @@ class Upload extends React.Component {
                   placeholder="Add a title to your video"
                   name="title"
                 ></input>
+                {Object.keys(errors) && initialPageTitle && (
+                  <div className="upload__error">{errors.titleLength}</div>
+                )}
                 <label htmlFor="description" className="upload__label">
                   Add a video description
                 </label>
@@ -77,6 +118,11 @@ class Upload extends React.Component {
                   placeholder="Add a description to your video"
                   name="description"
                 ></textarea>
+                {Object.keys(errors) && initialPageDescription && (
+                  <div className="upload__error">
+                    {errors.descriptionLength}
+                  </div>
+                )}
               </div>
             </div>
             <div className="divider"></div>
