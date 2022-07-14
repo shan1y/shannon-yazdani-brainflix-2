@@ -57,7 +57,10 @@ class Upload extends React.Component {
         timestamp: Date.now(),
       };
       //construct body for post request
-      await axios.post("http://localhost:8080/videos", newMovieData);
+      await axios.post(
+        "https://brainflix-project-api.herokuapp.com/videos",
+        newMovieData
+      );
       this.setState({
         uploadState: true,
         opacity: 1,

@@ -18,7 +18,7 @@ class MainContent extends React.Component {
   //Set state on initial render.
   componentDidMount() {
     axios
-      .get("http://localhost:8080/videos")
+      .get("https://brainflix-project-api.herokuapp.com/videos")
       .then((response) => {
         return response.data;
       })
