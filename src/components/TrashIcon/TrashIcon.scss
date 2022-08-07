@@ -1,0 +1,16 @@
+.comments__trash-button {
+    background-image: url("../../assets/Icons/delete_black_24dp.svg");
+    height: 1.4rem;
+    width: 1.2rem;
+    font-weight: 900;
+    background-repeat: no-repeat;
+    border-style: none;
+    background-color: transparent;
+    opacity: 30%;
+    padding: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 60%;
+    }
+  }
