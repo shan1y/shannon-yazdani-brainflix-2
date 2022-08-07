@@ -1,8 +1,8 @@
 import React from "react";
 import "./Comments.scss";
 
-function Comments() {
-  return this.props.selectedVideo.comments.map((comment) => {
+function Comments({selectedVideo}) {
+  return selectedVideo.comments.map((comment) => {
     return (
       <div className="comments__container" key={Math.random()}>
         <div className="comments__image-placeholder"></div>
