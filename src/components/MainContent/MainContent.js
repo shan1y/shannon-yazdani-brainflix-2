@@ -13,6 +13,7 @@ class MainContent extends React.Component {
     videos: [], //videos list for "next videos" section. Initial state is empty array. Data will come from API GET request.
     selectedVideo: null, //for the featured video section, Data will come from API GET request with first video as Id.
     videosLength: null,
+    commentValue: "",
   };
 
   //Set state on initial render.
@@ -34,8 +35,18 @@ class MainContent extends React.Component {
       });
   }
 
+  renderComments = (currentId) =>{
+    getVidById(currentId).then((activeVideo)=>{
+      this.setState({
+        selectedVideo:activeVideo.data,
+      })
+    })
+    console.log(this.state.selectedVideo)
+  }
+
   //when route is changed
   componentDidUpdate(previousProps, currentProps) {
+    console.log(previousProps)
     const previousId = previousProps.match.params.id;
     const currentId = this.props.match.params.id;
     //compare the previous Id with the new Id from route. If they're different, we make a API request to return the selectedvideo object, then set state with that info.
@@ -57,6 +68,7 @@ class MainContent extends React.Component {
     }
   }
 
+
   filter = () => {
     return this.state.videos.filter((video) => {
       return video.id !== this.state.selectedVideo.id; //returns a single video object. Used in "Next Videos" component.
@@ -77,7 +89,11 @@ class MainContent extends React.Component {
                 <VideoInfo selectedVideo={this.state.selectedVideo} />
               )}
               {selectedVideo && (
-                <Form selectedVideo={this.state.selectedVideo} />
+                <Form
+                  selectedVideo={this.state.selectedVideo}
+                  commentValue={this.state.commentValue}
+                  renderComments={this.renderComments}
+                />
               )}
             </div>
 

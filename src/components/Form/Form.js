@@ -5,18 +5,13 @@ import axios from "axios";
 import Comments from "../Comments/Comments";
 
 class Form extends React.Component {
-  state = {
-    comment: "",
-  };
 
-  selectedVideo = this.props.selectedVideo;
+  state={
+    commentValue:""
+  }
 
   handleCommentSubmit = async (e) => {
     e.preventDefault();
-
-    this.setState({
-      comment: e.target.form__input.value,
-    });
 
     let comment = {
       name: "Mohan Minaj",
@@ -29,7 +24,15 @@ class Form extends React.Component {
       `https://brainflix-project-api.herokuapp.com/videos/${this.props.selectedVideo.id}/comments`,
       comment
     );
+
+    this.setState({
+      commentValue: e.target.form__input.value,
+    });
+
+    this.props.renderComments(this.props.selectedVideo.id)
   };
+
+
 
   render() {
     return (
@@ -60,7 +63,7 @@ class Form extends React.Component {
           </div>
         </form>
 
-        <Comments selectedVideo={this.props.selectedVideo} />
+        <Comments selectedVideo={this.props.selectedVideo} commentValue ={this.state.commentValue} />
       </section>
     );
   }
