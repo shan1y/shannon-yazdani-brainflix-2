@@ -4,13 +4,9 @@ import React from "react";
 import axios from "axios";
 import Comments from "../Comments/Comments";
 
-class Form extends React.Component {
+function Form({selectedVideo, renderComments}) {
 
-  state={
-    commentValue:""
-  }
-
-  handleCommentSubmit = async (e) => {
+ const handleCommentSubmit = async (e) => {
     e.preventDefault();
 
     let comment = {
@@ -21,26 +17,20 @@ class Form extends React.Component {
     };
 
     await axios.post(
-      `https://brainflix-project-api.herokuapp.com/videos/${this.props.selectedVideo.id}/comments`,
+      `https://brainflix-project-api.herokuapp.com/videos/${selectedVideo.id}/comments`,
       comment
     );
 
-    this.setState({
-      commentValue: e.target.form__input.value,
-    });
-
-    this.props.renderComments(this.props.selectedVideo.id)
+   renderComments(selectedVideo.id)
   };
 
 
-
-  render() {
     return (
       <section>
         <div className="form__total-comments">
-          {`${this.props.selectedVideo.comments.length} comments`}
+          {`${selectedVideo.comments.length} comments`}
         </div>
-        <form className="form" onSubmit={this.handleCommentSubmit}>
+        <form className="form" onSubmit={handleCommentSubmit}>
           <div className="form__container">
             <div className="form__left">
               <div className="form__avatar-holder">
@@ -63,10 +53,10 @@ class Form extends React.Component {
           </div>
         </form>
 
-        <Comments selectedVideo={this.props.selectedVideo} commentValue ={this.state.commentValue} />
+        <Comments selectedVideo={selectedVideo}/>
       </section>
     );
   }
-}
+
 
 export default Form;
