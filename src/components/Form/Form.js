@@ -6,16 +6,17 @@ import Comments from "../Comments/Comments";
 
 class Form extends React.Component {
   state = {
-    comment:""
+    comment: "",
   };
 
   selectedVideo = this.props.selectedVideo;
 
   handleCommentSubmit = async (e) => {
     e.preventDefault();
-    
+
     this.setState({
-      comment:e.target.form__input.value})
+      comment: e.target.form__input.value,
+    });
 
     let comment = {
       name: "Mohan Minaj",
@@ -36,7 +37,7 @@ class Form extends React.Component {
         <div className="form__total-comments">
           {`${this.props.selectedVideo.comments.length} comments`}
         </div>
-        <form className="form"    onSubmit={this.handleCommentSubmit}>
+        <form className="form" onSubmit={this.handleCommentSubmit}>
           <div className="form__container">
             <div className="form__left">
               <div className="form__avatar-holder">
@@ -58,9 +59,8 @@ class Form extends React.Component {
             </div>
           </div>
         </form>
-        
-                <Comments selectedVideo={this.props.selectedVideo} />
-          
+
+        <Comments selectedVideo={this.props.selectedVideo} />
       </section>
     );
   }
