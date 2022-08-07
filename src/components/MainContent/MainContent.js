@@ -79,9 +79,6 @@ class MainContent extends React.Component {
               {selectedVideo && (
                 <Form selectedVideo={this.state.selectedVideo} />
               )}
-              {selectedVideo && (
-                <Comments selectedVideo={this.state.selectedVideo} />
-              )}
             </div>
 
             <div className="desktop__right-container">
