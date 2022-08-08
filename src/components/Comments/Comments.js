@@ -3,12 +3,13 @@ import TrashIcon from "../TrashIcon/TrashIcon";
 import "./Comments.scss";
 import axios from "axios";
 
-function Comments({ selectedVideo }) {
+function Comments({ selectedVideo, renderComments}) {
   
   const handleDelete = async (myTimestamp) => {
     await axios.delete(
-      `https://brainflix-project-api.herokuapp.com/videos/${selectedVideo.id}/${myTimestamp}/delete`
+     `https://brainflix-project-api.herokuapp.com/videos/${selectedVideo.id}/${myTimestamp}/delete`
     );
+    renderComments(selectedVideo.id)
   };
 
   return selectedVideo.comments.map((comment) => {
@@ -31,7 +32,7 @@ function Comments({ selectedVideo }) {
               </button>
             </div>
             <div className="comments__trash">
-              <TrashIcon  handleDelete={handleDelete} commentTimestamp={comment.timestamp}/>
+              <TrashIcon handleDelete={handleDelete} commentTimestamp={comment.timestamp}/>
             </div>
           </div>
         </div>

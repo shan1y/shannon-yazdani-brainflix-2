@@ -20,12 +20,8 @@ function Form({selectedVideo, renderComments}) {
       `https://brainflix-project-api.herokuapp.com/videos/${selectedVideo.id}/comments`,
       comment
     );
-
    renderComments(selectedVideo.id)
   };
-
-  
-
 
     return (
       <section>
@@ -55,7 +51,7 @@ function Form({selectedVideo, renderComments}) {
           </div>
         </form>
 
-        <Comments selectedVideo={selectedVideo}/>
+        <Comments renderComments={renderComments} selectedVideo={selectedVideo}/>
       </section>
     );
   }
