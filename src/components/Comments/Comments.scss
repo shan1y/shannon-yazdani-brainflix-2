@@ -52,22 +52,7 @@
     align-items: center;
   }
 
-  &__like-icon {
-    background-image: url("../../assets/Icons/likes.svg");
-    height: 1.5rem;
-    width: 1.5rem;
-    background-repeat: no-repeat;
-    border-style: none;
-    background-color: transparent;
-    opacity: 75%;
-    cursor: pointer;
-    transform: translateY(0.25rem);
 
-    &:hover {
-      background-image: url("../../assets/Icons/likes-hover.svg");
-      opacity: 65%;
-    }
-  }
 
   &__like-counter {
     transform: translateY(0.0625rem);
