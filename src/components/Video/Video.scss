@@ -7,25 +7,19 @@
   background-color: $video-player-color;
   display: flex;
   justify-content: center;
-
-  @include desktop {
-    width: $desktop-breakpoint;
-  }
+  background-color: black;
+  width:100%;
 
   &__frame {
     width: 100%;
     aspect-ratio: 16/9;
-    background-color: black;
-    max-width: 1280px;
     object-fit: cover;
 
     @include tablet {
       background-color: $video-player-color;
       width: 90%;
+      max-width:56rem;
 
-      @include desktop {
-        width: 70%;
-      }
     }
   }
 }

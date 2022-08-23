@@ -2,7 +2,6 @@ import "./Video.scss";
 
 function Video({ selectedVideo }) {
   return (
-    <div>
       <section className="video">
         <video
           className="video__frame"
@@ -10,7 +9,6 @@ function Video({ selectedVideo }) {
           poster={selectedVideo.image}
         ></video>
       </section>
-    </div>
   );
 }
 
